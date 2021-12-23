@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.8.2 on win32)" generated="20211223 00:46:03.878" rpa="false" schemaversion="2">
+<suite id="s1" name="TestGmailLogin" source="C:\Users\user\PycharmProjects\Gmail Login Tests\tests\TestGmailLogin.robot">
+<test id="s1-t1" name="TC02_Test Gmail With Invalid Login">
+<kw name="Begin Test" library="CommonKeywords" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211223 00:46:04.612" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20211223 00:46:04.611" endtime="20211223 00:46:07.748"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211223 00:46:07.748" endtime="20211223 00:46:07.919"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:04.610" endtime="20211223 00:46:07.919"/>
+</kw>
+<kw name="Check For Invalid Gmail Login" library="GmailCustomKeywords">
+<kw name="Go To Google Home" library="GoogleHomePage">
+<arg>${baseUrl}</arg>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>${baseUrl}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20211223 00:46:07.927" level="INFO">Opening url 'http://www.google.co.in'</msg>
+<status status="PASS" starttime="20211223 00:46:07.925" endtime="20211223 00:46:11.043"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:07.924" endtime="20211223 00:46:11.044"/>
+</kw>
+<kw name="Select Gmail" library="GoogleHomePage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${gmailIcon}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211223 00:46:11.045" endtime="20211223 00:46:11.122"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${gmailIcon}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211223 00:46:11.124" level="INFO">Clicking element 'xpath=//a[text()='Gmail']'.</msg>
+<status status="PASS" starttime="20211223 00:46:11.123" endtime="20211223 00:46:14.637"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:11.044" endtime="20211223 00:46:14.637"/>
+</kw>
+<kw name="Click SignIn Button" library="GmailLandingPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${signInBtn}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211223 00:46:14.639" endtime="20211223 00:46:14.706"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${signInBtn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211223 00:46:14.707" level="INFO">Clicking element 'xpath=//a[text()='Sign in']'.</msg>
+<status status="PASS" starttime="20211223 00:46:14.706" endtime="20211223 00:46:17.561"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:14.638" endtime="20211223 00:46:17.562"/>
+</kw>
+<kw name="Enter Gmail Invalid Credential" library="GmailLoginPage">
+<arg>${validLogin}</arg>
+<arg>${invalidLogin}</arg>
+<kw name="Get Value From User" library="Dialogs">
+<var>${flag}</var>
+<arg>enter true or false:</arg>
+<doc>Pauses test execution and asks user to input a value.</doc>
+<msg timestamp="20211223 00:46:24.434" level="INFO">${flag} = fg</msg>
+<status status="PASS" starttime="20211223 00:46:17.564" endtime="20211223 00:46:24.435"/>
+</kw>
+<if>
+<branch type="IF" condition="'${flag}' == 'True'">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Proceed With Invalid Password</arg>
+<arg>${validLogin}</arg>
+<arg>${invalidLogin}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="NOT RUN" starttime="20211223 00:46:24.438" endtime="20211223 00:46:24.438"/>
+</kw>
+<status status="NOT RUN" starttime="20211223 00:46:24.437" endtime="20211223 00:46:24.439"/>
+</branch>
+<branch type="ELSE IF" condition="'${flag}' == 'False'">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Proceed With Invalid Email</arg>
+<arg>${validLogin}</arg>
+<arg>${invalidLogin}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<status status="NOT RUN" starttime="20211223 00:46:24.439" endtime="20211223 00:46:24.440"/>
+</kw>
+<status status="NOT RUN" starttime="20211223 00:46:24.439" endtime="20211223 00:46:24.440"/>
+</branch>
+<branch type="ELSE">
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Proceed With No Email</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Proceed With No Email" library="GmailLoginPage">
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${emailInput}</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211223 00:46:24.443" endtime="20211223 00:46:24.719"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${nextBtn}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20211223 00:46:24.720" level="INFO">Clicking element 'xpath=//button[@type='button']//span[text()='Next']'.</msg>
+<status status="PASS" starttime="20211223 00:46:24.719" endtime="20211223 00:46:24.941"/>
+</kw>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>${noEmailNote}</arg>
+<arg>timeout=10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20211223 00:46:24.943" endtime="20211223 00:46:25.038"/>
+</kw>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${test}</var>
+<arg>${noEmailNote}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20211223 00:46:25.148" level="INFO">${test} = Enter an email or phone number</msg>
+<status status="PASS" starttime="20211223 00:46:25.038" endtime="20211223 00:46:25.148"/>
+</kw>
+<kw name="Element Text Should Be" library="SeleniumLibrary">
+<arg>${noEmailNote}</arg>
+<arg>${test}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20211223 00:46:25.149" level="INFO">Verifying element '//div[contains(text(),'Enter an email or phone number')]' contains exact text 'Enter an email or phone number'.</msg>
+<status status="PASS" starttime="20211223 00:46:25.148" endtime="20211223 00:46:25.221"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:24.442" endtime="20211223 00:46:25.221"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:24.441" endtime="20211223 00:46:25.222"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:24.440" endtime="20211223 00:46:25.222"/>
+</branch>
+<status status="PASS" starttime="20211223 00:46:24.435" endtime="20211223 00:46:25.222"/>
+</if>
+<status status="PASS" starttime="20211223 00:46:17.562" endtime="20211223 00:46:25.222"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:07.923" endtime="20211223 00:46:25.222"/>
+</kw>
+<kw name="End Test" library="CommonKeywords" type="TEARDOWN">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20211223 00:46:25.226" endtime="20211223 00:46:29.443"/>
+</kw>
+<status status="PASS" starttime="20211223 00:46:25.225" endtime="20211223 00:46:29.444"/>
+</kw>
+<tag>invalid</tag>
+<status status="PASS" starttime="20211223 00:46:04.608" endtime="20211223 00:46:29.445"/>
+</test>
+<doc>This is to automate testing of google mail login</doc>
+<status status="PASS" starttime="20211223 00:46:03.883" endtime="20211223 00:46:29.449"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">invalid</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestGmailLogin">TestGmailLogin</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
